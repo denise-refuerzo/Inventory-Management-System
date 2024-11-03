@@ -1,5 +1,8 @@
 public class Main {
     public static void main(String[] args){
-        System.out.println("GROUP2");
-    }
+        ViewProduct o = new ViewProduct();
+        o.WelcomePage();
+        // Execute the chosen option
+        o.execute();
+    } 
 }
