@@ -24,12 +24,12 @@ public class Main {
             System.out.println("\nInventory Management System");
             System.out.println("1. Add Hardware Item");
             System.out.println("2. View Inventory");
-            System.out.println("3. Update Quantity");
+            System.out.println("3. Sell Item");
             System.out.println("4. Remove Item");
             System.out.println("5. Exit");
             System.out.print("Choose an option: ");
             int choice = scanner.nextInt();
-            scanner.nextLine();  // Consume newline
+            scanner.nextLine();
             
         switch (choice) {
             case 1:
@@ -42,7 +42,11 @@ public class Main {
                 lc.clearConsole();
                 viewInventory();
                 break;
-            // case 3 -> updateQuantity();
+            case 3:
+                lc.loading();
+                lc.clearConsole();
+                sellItem();
+                break;
             // case 4 -> removeItem();
             // case 5 -> running = false;
             default:
@@ -58,7 +62,7 @@ public class Main {
         int quantity = scanner.nextInt();
         System.out.print("Enter price: ");
         double price = scanner.nextDouble();
-        scanner.nextLine();  // Consume newline
+        scanner.nextLine();
         System.out.print("Enter category (Ex. Sand, Rock, Cement): ");
         String category = scanner.nextLine();
 
@@ -77,5 +81,27 @@ public class Main {
             }
         }
     }
+
+    public static void sellItem(){
+        System.out.print("Enter item name: ");
+        String itemName = scanner.nextLine();
+        System.out.print("Enter Quantity Sell: ");
+        int quantitySell = scanner.nextInt();
+
+    for(InventoryItem item : inventory){
+        if(item.getName().equalsIgnoreCase(itemName)){
+            if (item.getQuantity() >= quantitySell) {
+            item.setQuantity(quantitySell);
+            double totalCost = item.getPrice() * quantitySell;
+            System.out.println("Sold " + quantitySell + " of " + item.getName() + " for ₱" + totalCost);
+            return;
+        }else{
+            System.out.println("Insufficient stock for " + item.getName());
+            return;
+            }
+        }
+    }
+        System.out.println("Item not found.");
+}
 
 }
