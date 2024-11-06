@@ -53,7 +53,10 @@ public class Main {
                 lc.clearConsole();
                 removeItem();
                 break;
-            // case 5 -> running = false;
+            case 5:
+                lc.loading();
+                lc.clearConsole();
+                exit();
             default:
             System.out.println("Invalid choice. Please try again.");
         }
@@ -143,4 +146,11 @@ public class Main {
         }
     }
 
+    private static void exit(){
+            System.out.println("------------------------------------------------");
+            System.out.println("                  BYEE:)              ");
+            System.out.println("------------------------------------------------");
+            System.out.println("Exiting the program...");
+            System.exit(0);
+            }
 }
