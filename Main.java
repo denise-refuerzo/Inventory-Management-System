@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 
@@ -47,7 +48,11 @@ public class Main {
                 lc.clearConsole();
                 sellItem();
                 break;
-            // case 4 -> removeItem();
+            case 4:
+                lc.loading();
+                lc.clearConsole();
+                removeItem();
+                break;
             // case 5 -> running = false;
             default:
             System.out.println("Invalid choice. Please try again.");
@@ -56,6 +61,10 @@ public class Main {
 } 
 
     private static void addHardwareItem() {
+        // This function ay para sa case 1 natin which is add item hehe lab u all
+        System.out.println("------------------------------------------------");
+        System.out.println("                   ADD ITEM               ");
+        System.out.println("------------------------------------------------");
         System.out.print("Enter item name: ");
         String name = scanner.nextLine();
         System.out.print("Enter quantity: ");
@@ -72,6 +81,7 @@ public class Main {
     }
 
     private static void viewInventory(){
+        // ito naman ay para sa case 2 to view the item hahahah
         if(inventory.isEmpty()){
             System.out.println("Inventory is empty.");
         }else{
@@ -82,7 +92,11 @@ public class Main {
         }
     }
 
-    public static void sellItem(){
+    private static void sellItem(){
+        // Itong function na'to ay para sa case 3 para ibenta yung product natin hehehehe
+        System.out.println("------------------------------------------------");
+        System.out.println("                  SELL ITEM              ");
+        System.out.println("------------------------------------------------");
         System.out.print("Enter item name: ");
         String itemName = scanner.nextLine();
         System.out.print("Enter Quantity Sell: ");
@@ -103,5 +117,30 @@ public class Main {
     }
         System.out.println("Item not found.");
 }
+
+    private static void removeItem(){
+        // function for case 4 to remove item
+        System.out.println("------------------------------------------------");
+        System.out.println("                  REMOVE ITEM              ");
+        System.out.println("------------------------------------------------");
+        System.out.print("Enter item name: ");
+        String name = scanner.nextLine();
+
+        boolean itemFound = false;
+        // Itong iterator ay para sa InventoryItem object inaallow nya mag loop yung ArrayList natin haha.
+        Iterator<InventoryItem> iterator = inventory.iterator();
+
+        while (iterator.hasNext()) {
+            InventoryItem item = iterator.next();{
+                iterator.remove();
+                itemFound = true;
+                System.out.println("The item is successfully removed.");
+                break;
+                }
+            }
+            if (!itemFound) {
+                System.out.println("Item not found.");
+        }
+    }
 
 }
