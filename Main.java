@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 
 public class Main {
+    /*Ito ay nag hohold ng object sa InventoryItem class natin*/
     private static ArrayList<InventoryItem> inventory = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
     
@@ -78,6 +79,8 @@ public class Main {
         System.out.print("Enter category (Ex. Sand, Rock, Cement): ");
         String category = scanner.nextLine();
 
+        /*Itong class HardwareItem na may object na item na may constructor
+        na nag aaccept ng name, quantity, price, category*/
         HardwareItem item = new HardwareItem(name, quantity, price, category);
         inventory.add(item);
         System.out.println("Hardware item added successfully.");
@@ -106,7 +109,12 @@ public class Main {
         int quantitySell = scanner.nextInt();
 
     for(InventoryItem item : inventory){
+        /*This line ay chinicheck if yung ininput ni 
+        user ay nag mamatch sa Item Name*/
         if(item.getName().equalsIgnoreCase(itemName)){
+            /*Ito naman ay chinicheck if yung
+            yung current stock ng item ay 
+            greater than or equal to quantitySell*/
             if (item.getQuantity() >= quantitySell) {
             item.setQuantity(quantitySell);
             double totalCost = item.getPrice() * quantitySell;
@@ -135,6 +143,7 @@ public class Main {
 
         while (iterator.hasNext()) {
             InventoryItem item = iterator.next();{
+                /*Remove the item directly*/
                 iterator.remove();
                 itemFound = true;
                 System.out.println("The item is successfully removed.");
