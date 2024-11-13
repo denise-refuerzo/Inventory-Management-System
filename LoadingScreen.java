@@ -10,12 +10,13 @@ public class LoadingScreen {
         //Exception
         Thread.currentThread().interrupt();
     }
-    System.out.println("\n------------------------------");
 }
 
+    // Pang clear ng screen
     public static void clearConsole(){
         System.out.print("\033[H\033[2J"); 
         System.out.flush();
     }
 }
 
+//pwede po kayo mag add ng gusto nyo sa system natin 
