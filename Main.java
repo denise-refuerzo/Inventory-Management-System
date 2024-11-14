@@ -28,7 +28,8 @@ public class Main {
             System.out.println("2. View Inventory");
             System.out.println("3. Sell Item");
             System.out.println("4. Remove Item");
-            System.out.println("5. Exit");
+            System.out.println("5. Update Item");
+            System.out.println("6. Exit");
             System.out.print("Choose an option: ");
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -55,6 +56,11 @@ public class Main {
                 removeItem();
                 break;
             case 5:
+                lc.loading();
+                lc.clearConsole();
+                updateItem();
+                break;
+            case 6:
                 lc.loading();
                 lc.clearConsole();
                 exit();
@@ -87,6 +93,9 @@ public class Main {
     }
 
     private static void viewInventory(){
+        System.out.println("------------------------------------------------");
+        System.out.println("                  VIEW ITEM              ");
+        System.out.println("------------------------------------------------");
         // ito naman ay para sa case 2 to view the item hahahah
         if(inventory.isEmpty()){
             System.out.println("Inventory is empty.");
@@ -153,6 +162,54 @@ public class Main {
             if (!itemFound) {
                 System.out.println("Item not found.");
         }
+    }
+
+    private static void updateItem() {
+        System.out.println("------------------------------------------------");
+        System.out.println("                  UPDATE ITEM              ");
+        System.out.println("------------------------------------------------");
+        System.out.print("Enter product name: ");
+        String itemName = scanner.nextLine();
+
+        InventoryItem itemToUpdate = findItemByName(itemName);
+
+        if (itemToUpdate == null) {
+            System.out.println("Product not found in inventory.");
+            return;
+        }
+
+        System.out.print("Do you want to update this product? (Y/N): ");
+        String updateChoice = scanner.nextLine();
+
+        if (updateChoice.equalsIgnoreCase("Y")) {
+            System.out.print("Enter new quantity: ");
+            int newQuantity = scanner.nextInt();
+            System.out.print("Enter new price: ");
+            double newPrice = scanner.nextDouble();
+            scanner.nextLine();
+
+            itemToUpdate.setPrice(newPrice);
+            itemToUpdate.setQuantity(newQuantity);
+
+            if (itemToUpdate instanceof updateProduct) {
+                ((updateProduct) itemToUpdate).setUpdateItem("Updated on " + java.time.LocalDate.now());
+            }
+
+            System.out.println("Product updated successfully!");
+        } else if (updateChoice.equalsIgnoreCase("N")) {
+            System.out.println("Update canceled.");
+        } else {
+            System.out.println("Invalid input. Please enter 'Y' or 'N'.");
+        }
+    }
+
+    private static InventoryItem findItemByName(String itemName) {
+        for (InventoryItem item : inventory) {
+            if (item.getName().equalsIgnoreCase(itemName)) {
+                return item;
+            }
+        }
+        return null;
     }
 
     private static void exit(){
