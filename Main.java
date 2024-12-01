@@ -1,3 +1,4 @@
+import javax.swing.text.View;
 import java.util.Scanner;
 
 public class Main {
@@ -7,8 +8,14 @@ public class Main {
         LoadingScreen lc = new LoadingScreen();
         Banner b = new Banner();
         Action a = new Action();
-
+        Action1 addItem = new Add();
+       // Action1 viewItem = new View(); //
+        Action1 sellItem = new Sell();
+        Action1 updateItem = new Update();
+        Action1 removeItem = new Remove();
+        Action1 exitProgram = new Exit();
         b.welcome();
+
         boolean running = true;
         while (running) {
             System.out.println("\nInventory Management System");
@@ -27,7 +34,7 @@ public class Main {
                     lc.clearConsole();
                     lc.loading();
                     lc.clearConsole();
-                    a.addHardwareItem();
+                    addItem.option();
                     break;
                 case 2:
                     lc.clearConsole();
@@ -39,25 +46,25 @@ public class Main {
                     lc.clearConsole();
                     lc.loading();
                     lc.clearConsole();
-                    a.sellItem();
+                    sellItem.option();
                     break;
                 case 4:
                     lc.clearConsole();
                     lc.loading();
                     lc.clearConsole();
-                    a.removeItem();
+                    removeItem.option();
                     break;
                 case 5:
                     lc.clearConsole();
                     lc.loading();
                     lc.clearConsole();
-                    a.updateItem();
+                    updateItem.option();
                     break;
                 case 6:
                     lc.clearConsole();
                     lc.loading();
                     lc.clearConsole();
-                    a.exit();
+                    exitProgram.option();
                 default:
                     System.out.println("Invalid choice. Please try again.");
             }
