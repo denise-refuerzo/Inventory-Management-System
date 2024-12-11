@@ -34,9 +34,8 @@ public class LoadingScreen
 
     //edited=A
     public static void clearConsole(){
-        for (int i = 0; i < 50; i++) {
-            System.out.println();
-        }
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 
     //added
