@@ -1,7 +1,17 @@
-public class Sell implements Action1{
+import java.util.ArrayList;
+import java.util.Scanner;
 
+public class Sell extends Action{
+    public static final Scanner scanner = new Scanner(System.in);
+    private final ArrayList<InventoryItem> inventory;
+    
+    public Sell(ArrayList<InventoryItem> inventory) {
+        this.inventory = inventory;
+    }
+    
     @Override
     public void option(){
+        
         // Itong function na'to ay para sa case 3 para ibenta yung product natin hehehehe
         System.out.println("------------------------------------------------");
         System.out.println("                  SELL ITEM              ");

@@ -1,4 +1,3 @@
-
 public class updateProduct extends HardwareItem {
     private String updateItem;
 

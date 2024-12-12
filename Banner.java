@@ -1,4 +1,3 @@
-
 public class Banner {
 
     void welcome(){

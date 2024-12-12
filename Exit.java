@@ -1,4 +1,4 @@
-public class Exit implements Action1{
+public class Exit extends Action{
 
     @Override
     public void option(){

@@ -1,7 +1,15 @@
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Scanner;
 
-public class Remove implements Action1{
-
+public class Remove extends Action{
+    public static final Scanner scanner = new Scanner(System.in);
+    private final ArrayList<InventoryItem> inventory;
+    
+    public Remove(ArrayList<InventoryItem> inventory) {
+        this.inventory = inventory;
+    }
+    
     @Override
     public void option(){
         // function for case 4 to remove item

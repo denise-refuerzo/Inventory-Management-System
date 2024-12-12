@@ -1,21 +1,22 @@
 import javax.swing.text.View;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
+    private static final ArrayList<InventoryItem> inventory = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         LoadingScreen lc = new LoadingScreen();
         Banner b = new Banner();
-        Action a = new Action();
-        Action1 addItem = new Add();
-       // Action1 viewItem = new View(); //
-        Action1 sellItem = new Sell();
-        Action1 updateItem = new Update();
-        Action1 removeItem = new Remove();
-        Action1 exitProgram = new Exit();
+        Action1 addItem = new Add(inventory);
+        Action viewItem = new viewInventory(inventory);
+        Action sellItem = new Sell(inventory);
+        Action updateItem = new Update(inventory);
+        Action removeItem = new Remove(inventory);
+        Action exitProgram = new Exit();
         b.welcome();
-
+        
         boolean running = true;
         while (running) {
             System.out.println("\nInventory Management System");
@@ -40,7 +41,7 @@ public class Main {
                     lc.clearConsole();
                     lc.loading();
                     lc.clearConsole();
-                    a.viewInventory();
+                    viewItem.option();
                     break;
                 case 3:
                     lc.clearConsole();

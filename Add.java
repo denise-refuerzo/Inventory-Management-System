@@ -1,4 +1,12 @@
+import java.util.*;
+
 public class Add implements Action1{
+    private ArrayList<InventoryItem> inventory;
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public Add(ArrayList<InventoryItem> inventory){
+        this.inventory = inventory;
+    }
 
     @Override
     public void option(){

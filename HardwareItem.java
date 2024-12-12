@@ -1,4 +1,3 @@
-
 public class HardwareItem extends InventoryItem {
     private String category;
 

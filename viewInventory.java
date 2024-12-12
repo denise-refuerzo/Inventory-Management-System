@@ -1,6 +1,12 @@
-public class View implements Action1{
+import java.util.ArrayList;
 
-
+public class viewInventory extends Action{
+    private final ArrayList<InventoryItem> inventory;
+    
+    public viewInventory(ArrayList<InventoryItem> inventory) {
+        this.inventory = inventory;
+    }
+    
     @Override
     public void option() {
         System.out.println("------------------------------------------------");
@@ -11,7 +17,6 @@ public class View implements Action1{
             System.out.println("Inventory is empty.");
             LoadingScreen.delay();
         }else{
-            LoadingScreen.clearConsole();
             System.out.println("Inventory List");
             for(InventoryItem item: inventory){
                 System.out.println(item);
